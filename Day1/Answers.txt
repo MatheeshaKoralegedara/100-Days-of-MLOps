@@ -1,0 +1,33 @@
+Here’s the exact step-by-step on the controlplane host to complete the task.
+
+✅ 1. Create project directory (if not exists)
+mkdir -p /root/code
+✅ 2. Create Python virtual environment
+python3 -m venv /root/code/ml-env
+✅ 3. Activate the virtual environment
+source /root/code/ml-env/bin/activate     #linux
+.\Scripts\Activate     #Windows
+
+After activation, your prompt should change like:
+
+(ml-env) root@controlplane:~#
+✅ 4. Upgrade pip (recommended)
+pip install --upgrade pip     or     python -m pip install --upgrade pip
+✅ 5. Install required ML libraries
+pip install numpy pandas scikit-learn matplotlib
+✅ 6. Generate requirements.txt
+pip freeze > /root/code/requirements.txt  #linux
+pip freeze > requirements.txt      #windows
+✅ 7. Verify file
+cat /root/code/requirements.txt
+🎯 Done
+
+You now have:
+
+Virtual environment: /root/code/ml-env
+Installed ML stack:
+numpy
+pandas
+scikit-learn
+matplotlib
+Dependency snapshot: /root/code/requirements.txt
