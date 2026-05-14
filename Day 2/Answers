@@ -1,0 +1,89 @@
+You need to fix three things in the JupyterLab config:
+
+1. **Bind address (must be 0.0.0.0)**
+2. **Port (must be 8888)**
+3. **Root directory (must be /root/notebooks and exist on disk)**
+
+---
+
+## ✅ Step 1: Create the missing notebook directory
+
+Run:
+
+```bash
+mkdir -p /root/notebooks
+```
+
+---
+
+## ✅ Step 2: Open the config file
+
+```bash
+nano /root/code/jupyter_lab_config.py
+```
+
+(or use vim if preferred)
+
+---
+
+## ✅ Step 3: Fix / verify these settings
+
+Make sure the following lines exist and are **NOT commented out** (no `#` at the start):
+
+```python
+c.ServerApp.ip = '0.0.0.0'
+c.ServerApp.port = 8888
+c.ServerApp.root_dir = '/root/notebooks'
+```
+
+---
+
+## ⚠️ Common issues to remove if present
+
+If you see any of these, fix them:
+
+* ❌ `ip = '127.0.0.1'` → change to `0.0.0.0`
+* ❌ `port = 8889` or other → change to `8888`
+* ❌ `root_dir = '/root'` or similar → change to `/root/notebooks`
+* ❌ commented lines like `# c.ServerApp.ip = ...` → uncomment them
+
+---
+
+## ✅ Step 4: Start JupyterLab from the virtual environment
+
+```bash
+source /root/code/ml-env/bin/activate
+
+jupyter lab \
+  --config=/root/code/jupyter_lab_config.py \
+  --allow-root \
+  --no-browser &
+```
+
+---
+
+## ✅ Step 5: Verify it's running
+
+Check:
+
+```bash
+ps aux | grep jupyter
+```
+
+or:
+
+```bash
+netstat -tulnp | grep 8888
+```
+
+---
+
+## 🎯 Expected result
+
+* JupyterLab accessible via UI button
+* Running on **0.0.0.0:8888**
+* Opens notebooks from **/root/notebooks**
+
+---
+
+If you want, paste your current config file here and I’ll point out exactly what’s wrong line-by-line.
