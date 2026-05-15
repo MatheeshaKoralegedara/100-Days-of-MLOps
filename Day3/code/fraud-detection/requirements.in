@@ -1,0 +1,4 @@
+# Fraud detection project dependencies
+sklearn
+mlflow>=100.0
+numpy

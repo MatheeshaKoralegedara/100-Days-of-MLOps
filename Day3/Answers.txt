@@ -1,0 +1,46 @@
+```bash
+cd /root/code/fraud-detection
+
+# Check the current file
+cat requirements.in
+
+# Edit the file
+vi requirements.in
+```
+
+Replace the contents with exactly:
+
+```txt
+scikit-learn>=1.4
+mlflow>=2.12
+pandas>=2.2
+numpy>=1.26
+```
+
+Save and exit in `vi`:
+
+1. Press `Esc`
+2. Type:
+
+```bash
+:wq
+```
+
+3. Press `Enter`
+
+Then compile the lockfile:
+
+```bash
+uv pip compile requirements.in -o requirements.txt
+```
+
+Verify:
+
+```bash
+cat requirements.txt
+```
+
+You should see:
+
+* pinned top-level packages using `==`
+* all transitive dependencies included automatically by `uv`
