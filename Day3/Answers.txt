@@ -44,3 +44,53 @@ You should see:
 
 * pinned top-level packages using `==`
 * all transitive dependencies included automatically by `uv`
+....................................................................................................................
+
+`uv` is not installed on your Windows machine yet. Install it first.
+
+In PowerShell, run:
+
+```powershell
+pip install uv
+```
+
+If `pip` also does not work, use:
+
+```powershell
+python -m pip install uv
+```
+
+After installation, verify:
+
+```powershell
+uv --version
+```
+
+Then run the compile command again (also fix the filename typo):
+
+```powershell
+uv pip compile requirements.in -o requirements.txt
+```
+
+You wrote `requiremnts.txt` before — it should be `requirements.txt`.
+
+Your `requirements.in` should contain exactly:
+
+```txt
+scikit-learn>=1.4
+mlflow>=2.12
+pandas>=2.2
+numpy>=1.26
+```
+
+After compiling, check:
+
+```powershell
+cat requirements.txt
+```
+
+or
+
+```powershell
+Get-Content requirements.txt
+```
