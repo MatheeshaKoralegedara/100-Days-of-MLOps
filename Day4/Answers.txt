@@ -1,0 +1,74 @@
+Do it like a small “project refactor” in the terminal. Since we don’t yet know the current structure, first inspect it, then fix it.
+
+### 1. Inspect current layout
+
+```bash
+cd /root/code/fraud-detection
+ls -R
+```
+
+---
+
+### 2. Create required standard directories
+
+Run this to enforce the target structure:
+
+```bash
+mkdir -p data/raw data/processed
+mkdir -p models notebooks
+mkdir -p src/data src/features src/models src/utils
+mkdir -p tests configs
+```
+
+---
+
+### 3. Ensure `__init__.py` exists in all `src/` subpackages
+
+```bash
+touch src/data/__init__.py
+touch src/features/__init__.py
+touch src/models/__init__.py
+touch src/utils/__init__.py
+```
+
+---
+
+### 4. Fix `requirements.txt`
+
+Overwrite it exactly:
+
+```bash
+printf "scikit-learn\npandas\nnumpy\nmlflow\n" > requirements.txt
+```
+
+---
+
+### 5. Fix README.md (must start correctly)
+
+```bash
+printf "# fraud-detection\n" > README.md
+```
+
+---
+
+### 6. (Optional but important) Check nothing is misplaced
+
+After restructuring:
+
+```bash
+find . -maxdepth 2 -type d
+```
+
+---
+
+### If you find existing files in wrong places
+
+Use `mv` like:
+
+```bash
+mv old_location/file.py src/models/
+```
+
+---
+
+If you paste the output of `ls -R`, I can help you do a **precise cleanup (move existing code instead of just structuring folders)**.
